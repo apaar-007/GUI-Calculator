@@ -5,14 +5,19 @@ import com.calculator.beans.*;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.EtchedBorder;
 
 public class Calculator {
 
@@ -47,6 +52,8 @@ public class Calculator {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setResizable(false);
+		frame.getContentPane().setBackground(Color.BLACK);
 		frame.setBounds(100, 100, 464, 571);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -58,22 +65,26 @@ public class Calculator {
 		frame.getContentPane().add(txtResult);
 		txtResult.setColumns(10);
 		
-		JButton btnClear = new JButton("C");
-		btnClear.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
-		btnClear.setForeground(Color.GREEN);
-		btnClear.setFont(new Font("Tahoma", Font.BOLD, 22));
+		JButton btnClear = new JButton("");
+		btnClear.setBorder(new LineBorder(Color.WHITE, 4, true));
+		btnClear.setBackground(Color.BLACK);
+		btnClear.setForeground(Color.BLACK);
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				txtResult.setText(null);
 			}
 		});
+		Image btReset = new ImageIcon(this.getClass().getResource("/c.png")).getImage();
+		btnClear.setIcon(new ImageIcon(btReset));
 		btnClear.setBounds(12, 145, 97, 63);
 		frame.getContentPane().add(btnClear);
 		
 		JButton btnBackspace = new JButton("B");
-		btnBackspace.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
-		btnBackspace.setForeground(Color.RED);
-		btnBackspace.setFont(new Font("Tahoma", Font.BOLD, 22));
+		btnBackspace.setBackground(Color.BLACK);
+		btnBackspace.setBorder(new LineBorder(Color.WHITE, 4, true));
+		btnBackspace.setForeground(Color.BLACK);
+		Image btnBack = new ImageIcon(this.getClass().getResource("/b.png")).getImage();
+		btnBackspace.setIcon(new ImageIcon(btnBack));
 		btnBackspace.setBounds(121, 145, 97, 63);
 		frame.getContentPane().add(btnBackspace);
 		
@@ -85,8 +96,8 @@ public class Calculator {
 				model.setOperator("/");
 			}
 		});
-		btnDivide.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
-		btnDivide.setFont(new Font("Tahoma", Font.BOLD, 22));
+		Image btDvd = new ImageIcon(this.getClass().getResource("")).getImage();
+		btnDivide.setIcon(new ImageIcon(btDvd));
 		btnDivide.setBounds(230, 145, 97, 63);
 		frame.getContentPane().add(btnDivide);
 		
@@ -320,9 +331,11 @@ public class Calculator {
 		btnZero.setBounds(121, 444, 97, 63);
 		frame.getContentPane().add(btnZero);
 		
-		JLabel lblHeading = new JLabel("Simple Calculator");
+		JLabel lblHeading = new JLabel("");
+		Image cal = new ImageIcon(this.getClass().getResource("/cal.gif")).getImage();
+		lblHeading.setIcon(new ImageIcon(cal));
 		lblHeading.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 24));
-		lblHeading.setBounds(107, 13, 240, 26);
+		lblHeading.setBounds(73, 13, 299, 26);
 		frame.getContentPane().add(lblHeading);
 		
 		JButton btn_dot = new JButton(".");
@@ -337,5 +350,7 @@ public class Calculator {
 		btn_dot.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 		btn_dot.setBounds(12, 444, 97, 63);
 		frame.getContentPane().add(btn_dot);
+		
+		
 	}
 }
