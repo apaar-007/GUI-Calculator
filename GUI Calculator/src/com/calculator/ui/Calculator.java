@@ -26,20 +26,29 @@ public class Calculator {
 	private JFrame frame;
 	private JTextField txtResult;
     CalculatorModel model = new CalculatorModel();
+    private JTextField txtOperator;
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
 				try {
+					Splash splash = new Splash();
 					Calculator window = new Calculator();
-					window.frame.setVisible(true);
+					splash.setVisible(true);
+					
+					for(int i = 0;i <= 100; i++) {
+						Thread.sleep(i);
+						splash.setProgressBar(i);
+						splash.setLblpercentage(Integer.toString(i)+"%");
+						if (i == 100) {
+							splash.dispose();
+								window.frame.setVisible(true);
+							}
+					}
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}
-		});
 	}
 
 	/**
@@ -59,6 +68,11 @@ public class Calculator {
 		frame.setBounds(100, 100, 464, 571);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		
+		txtOperator = new JTextField();
+		txtOperator.setBounds(391, 66, 42, 20);
+		frame.getContentPane().add(txtOperator);
+		txtOperator.setColumns(10);
 		
 		txtResult = new JTextField();
 		txtResult.setFont(new Font("Tahoma", Font.BOLD, 23));
@@ -93,6 +107,7 @@ public class Calculator {
 			public void actionPerformed(ActionEvent e) {
 				model.setNum1(Double.parseDouble(txtResult.getText()));
 				txtResult.setText(" ");
+				txtOperator.setText(btnDivide.getText());
 				model.setOperator("/");
 			}
 		});
@@ -106,6 +121,7 @@ public class Calculator {
 			public void actionPerformed(ActionEvent arg0) {
 				model.setNum1(Double.parseDouble(txtResult.getText()));
 				txtResult.setText(" ");
+				txtOperator.setText(btnMultiply.getText());
 				model.setOperator("X");
 			}
 		});
@@ -163,6 +179,7 @@ public class Calculator {
 				
 				model.setNum1(Double.parseDouble(txtResult.getText()));
 				txtResult.setText(" ");
+				txtOperator.setText(btnAdd.getText());
 				model.setOperator("+");
 				
 			}
@@ -220,6 +237,7 @@ public class Calculator {
 			public void actionPerformed(ActionEvent e) {
 				model.setNum1(Double.parseDouble(txtResult.getText()));
 				txtResult.setText(" ");
+				txtOperator.setText(btnSubtract.getText());
 				model.setOperator("-");
 			}
 		});
@@ -281,6 +299,7 @@ public class Calculator {
 			public void actionPerformed(ActionEvent e) {
 				model.setNum1(Double.parseDouble(txtResult.getText()));
 				txtResult.setText(" ");
+				txtOperator.setText(btnModulus.getText());
 				model.setOperator("%");
 			}
 		});
