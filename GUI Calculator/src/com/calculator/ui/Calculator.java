@@ -18,6 +18,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
+import java.awt.ComponentOrientation;
+import java.awt.SystemColor;
 
 public class Calculator {
 
@@ -61,30 +63,28 @@ public class Calculator {
 		txtResult = new JTextField();
 		txtResult.setFont(new Font("Tahoma", Font.BOLD, 23));
 		txtResult.setHorizontalAlignment(SwingConstants.RIGHT);
-		txtResult.setBounds(12, 52, 421, 73);
+		txtResult.setBounds(12, 89, 421, 47);
 		frame.getContentPane().add(txtResult);
 		txtResult.setColumns(10);
 		
-		JButton btnClear = new JButton("");
-		btnClear.setBorder(new LineBorder(Color.WHITE, 4, true));
-		btnClear.setBackground(Color.BLACK);
+		JButton btnClear = new JButton("C");
+		btnClear.setFont(new Font("Tahoma", Font.BOLD, 22));
 		btnClear.setForeground(Color.BLACK);
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				txtResult.setText(null);
 			}
 		});
-		Image btReset = new ImageIcon(this.getClass().getResource("/c.png")).getImage();
-		btnClear.setIcon(new ImageIcon(btReset));
+		Image btclr = new ImageIcon(this.getClass().getResource("/c.png")).getImage();
+		btnClear.setIcon(new ImageIcon(btclr));
 		btnClear.setBounds(12, 145, 97, 63);
 		frame.getContentPane().add(btnClear);
 		
 		JButton btnBackspace = new JButton("B");
-		btnBackspace.setBackground(Color.BLACK);
-		btnBackspace.setBorder(new LineBorder(Color.WHITE, 4, true));
+		btnBackspace.setFont(new Font("Tahoma", Font.BOLD, 22));
 		btnBackspace.setForeground(Color.BLACK);
-		Image btnBack = new ImageIcon(this.getClass().getResource("/b.png")).getImage();
-		btnBackspace.setIcon(new ImageIcon(btnBack));
+		Image btBack = new ImageIcon(this.getClass().getResource("/b.png")).getImage();
+		btnBackspace.setIcon(new ImageIcon(btBack));
 		btnBackspace.setBounds(121, 145, 97, 63);
 		frame.getContentPane().add(btnBackspace);
 		
@@ -96,7 +96,7 @@ public class Calculator {
 				model.setOperator("/");
 			}
 		});
-		Image btDvd = new ImageIcon(this.getClass().getResource("")).getImage();
+		Image btDvd = new ImageIcon(this.getClass().getResource("/dvd.png")).getImage();
 		btnDivide.setIcon(new ImageIcon(btDvd));
 		btnDivide.setBounds(230, 145, 97, 63);
 		frame.getContentPane().add(btnDivide);
@@ -109,8 +109,9 @@ public class Calculator {
 				model.setOperator("X");
 			}
 		});
-		btnMultiply.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 		btnMultiply.setFont(new Font("Tahoma", Font.BOLD, 22));
+		Image btMlt = new ImageIcon(this.getClass().getResource("/mlt.png")).getImage();
+		btnMultiply.setIcon(new ImageIcon(btMlt));
 		btnMultiply.setBounds(339, 145, 97, 63);
 		frame.getContentPane().add(btnMultiply);
 		
@@ -122,8 +123,9 @@ public class Calculator {
 				txtResult.setText(model.getNumber());
 			}
 		});
-		btnSeven.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 		btnSeven.setFont(new Font("Tahoma", Font.BOLD, 22));
+		Image btSeven = new ImageIcon(this.getClass().getResource("/num7.png")).getImage();
+		btnSeven.setIcon(new ImageIcon(btSeven));
 		btnSeven.setBounds(12, 221, 97, 63);
 		frame.getContentPane().add(btnSeven);
 		
@@ -135,8 +137,9 @@ public class Calculator {
 				txtResult.setText(model.getNumber());
 			}
 		});
-		btnEight.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 		btnEight.setFont(new Font("Tahoma", Font.BOLD, 22));
+		Image btEight = new ImageIcon(this.getClass().getResource("/num8.png")).getImage();
+		btnEight.setIcon(new ImageIcon(btEight));
 		btnEight.setBounds(121, 221, 97, 63);
 		frame.getContentPane().add(btnEight);
 		
@@ -148,8 +151,9 @@ public class Calculator {
 				txtResult.setText(model.getNumber());
 			}
 		});
-		btnNine.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 		btnNine.setFont(new Font("Tahoma", Font.BOLD, 22));
+		Image btNine = new ImageIcon(this.getClass().getResource("/num9.png")).getImage();
+		btnNine.setIcon(new ImageIcon(btNine));
 		btnNine.setBounds(230, 221, 97, 63);
 		frame.getContentPane().add(btnNine);
 		
@@ -163,8 +167,9 @@ public class Calculator {
 				
 			}
 		});
-		btnAdd.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 		btnAdd.setFont(new Font("Tahoma", Font.BOLD, 22));
+		Image btPls = new ImageIcon(this.getClass().getResource("/pls.png")).getImage();
+		btnAdd.setIcon(new ImageIcon(btPls));
 		btnAdd.setBounds(339, 221, 97, 63);
 		frame.getContentPane().add(btnAdd);
 		
@@ -176,8 +181,9 @@ public class Calculator {
 				txtResult.setText(model.getNumber());
 			}
 		});
-		btnFour.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 		btnFour.setFont(new Font("Tahoma", Font.BOLD, 22));
+		Image btFour = new ImageIcon(this.getClass().getResource("/num4.png")).getImage();
+		btnFour.setIcon(new ImageIcon(btFour));
 		btnFour.setBounds(12, 297, 97, 63);
 		frame.getContentPane().add(btnFour);
 		
@@ -189,8 +195,9 @@ public class Calculator {
 				txtResult.setText(model.getNumber());
 			}
 		});
-		btnFive.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 		btnFive.setFont(new Font("Tahoma", Font.BOLD, 22));
+		Image btFive = new ImageIcon(this.getClass().getResource("/num5.png")).getImage();
+		btnFive.setIcon(new ImageIcon(btFive));
 		btnFive.setBounds(121, 297, 97, 63);
 		frame.getContentPane().add(btnFive);
 		
@@ -202,8 +209,9 @@ public class Calculator {
 				txtResult.setText(model.getNumber());
 			}
 		});
-		btnSix.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 		btnSix.setFont(new Font("Tahoma", Font.BOLD, 22));
+		Image btSix = new ImageIcon(this.getClass().getResource("/num6.png")).getImage();
+		btnSix.setIcon(new ImageIcon(btSix));
 		btnSix.setBounds(230, 297, 97, 63);
 		frame.getContentPane().add(btnSix);
 		
@@ -215,8 +223,9 @@ public class Calculator {
 				model.setOperator("-");
 			}
 		});
-		btnSubtract.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 		btnSubtract.setFont(new Font("Tahoma", Font.BOLD, 22));
+		Image btSub = new ImageIcon(this.getClass().getResource("/sub.png")).getImage();
+		btnSubtract.setIcon(new ImageIcon(btSub));
 		btnSubtract.setBounds(339, 297, 97, 63);
 		frame.getContentPane().add(btnSubtract);
 		
@@ -232,9 +241,10 @@ public class Calculator {
 				
 			}
 		});
-		btnOne.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 		btnOne.setFont(new Font("Tahoma", Font.BOLD, 22));
 		btnOne.setBounds(12, 373, 97, 63);
+		Image btOne = new ImageIcon(this.getClass().getResource("/num1.png")).getImage();
+		btnOne.setIcon(new ImageIcon(btOne));
 		frame.getContentPane().add(btnOne);
 		
 		JButton btntwo = new JButton("2");
@@ -247,8 +257,9 @@ public class Calculator {
 				txtResult.setText(model.getNumber());
 			}
 		});
-		btntwo.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 		btntwo.setFont(new Font("Tahoma", Font.BOLD, 22));
+		Image btTwo = new ImageIcon(this.getClass().getResource("/num2.png")).getImage();
+		btntwo.setIcon(new ImageIcon(btTwo));
 		btntwo.setBounds(121, 373, 97, 63);
 		frame.getContentPane().add(btntwo);
 		
@@ -259,8 +270,9 @@ public class Calculator {
 				txtResult.setText(model.getNumber());
 			}
 		});
-		btnThree.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 		btnThree.setFont(new Font("Tahoma", Font.BOLD, 22));
+		Image btThree = new ImageIcon(this.getClass().getResource("/num3.png")).getImage();
+		btnThree.setIcon(new ImageIcon(btThree));
 		btnThree.setBounds(230, 373, 97, 63);
 		frame.getContentPane().add(btnThree);
 		
@@ -272,7 +284,8 @@ public class Calculator {
 				model.setOperator("%");
 			}
 		});
-		btnModulus.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
+		Image btMod = new ImageIcon(this.getClass().getResource("/mod.png")).getImage();
+		btnModulus.setIcon(new ImageIcon(btMod));
 		btnModulus.setFont(new Font("Tahoma", Font.BOLD, 22));
 		btnModulus.setBounds(339, 373, 97, 63);
 		frame.getContentPane().add(btnModulus);
@@ -312,9 +325,10 @@ public class Calculator {
 				}
 			}
 	);
-		btnEquals.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 		btnEquals.setForeground(Color.BLUE);
 		btnEquals.setFont(new Font("Tahoma", Font.BOLD, 22));
+		Image btEql = new ImageIcon(this.getClass().getResource("/eql.png")).getImage();
+		btnEquals.setIcon(new ImageIcon(btEql));
 		btnEquals.setBounds(230, 444, 203, 63);
 		frame.getContentPane().add(btnEquals);
 		
@@ -326,8 +340,9 @@ public class Calculator {
 				
 			}
 		});
-		btnZero.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 		btnZero.setFont(new Font("Tahoma", Font.BOLD, 22));
+		Image btZero = new ImageIcon(this.getClass().getResource("/num0.png")).getImage();
+		btnZero.setIcon(new ImageIcon(btZero));
 		btnZero.setBounds(121, 444, 97, 63);
 		frame.getContentPane().add(btnZero);
 		
@@ -335,7 +350,7 @@ public class Calculator {
 		Image cal = new ImageIcon(this.getClass().getResource("/cal.gif")).getImage();
 		lblHeading.setIcon(new ImageIcon(cal));
 		lblHeading.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 24));
-		lblHeading.setBounds(73, 13, 299, 26);
+		lblHeading.setBounds(12, 0, 421, 87);
 		frame.getContentPane().add(lblHeading);
 		
 		JButton btn_dot = new JButton(".");
@@ -347,7 +362,8 @@ public class Calculator {
 			}
 		});
 		btn_dot.setFont(new Font("Tahoma", Font.BOLD, 22));
-		btn_dot.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
+		Image btDot = new ImageIcon(this.getClass().getResource("/dot.png")).getImage();
+		btn_dot.setIcon(new ImageIcon(btDot));
 		btn_dot.setBounds(12, 444, 97, 63);
 		frame.getContentPane().add(btn_dot);
 		
