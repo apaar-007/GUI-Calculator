@@ -1,8 +1,6 @@
 package com.calculator.ui;
 
-import java.awt.EventQueue;
 import com.calculator.beans.*;
-
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
@@ -12,14 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Color;
-import javax.swing.border.LineBorder;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import javax.swing.border.SoftBevelBorder;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.EtchedBorder;
-import java.awt.ComponentOrientation;
-import java.awt.SystemColor;
 
 public class Calculator {
 
@@ -70,11 +62,15 @@ public class Calculator {
 		frame.getContentPane().setLayout(null);
 		
 		txtOperator = new JTextField();
+		txtOperator.setEditable(false);
+		txtOperator.setHorizontalAlignment(SwingConstants.CENTER);
+		txtOperator.setFont(new Font("Tahoma", Font.BOLD, 23));
 		txtOperator.setBounds(391, 66, 42, 20);
 		frame.getContentPane().add(txtOperator);
 		txtOperator.setColumns(10);
 		
 		txtResult = new JTextField();
+		txtResult.setEditable(false);
 		txtResult.setFont(new Font("Tahoma", Font.BOLD, 23));
 		txtResult.setHorizontalAlignment(SwingConstants.RIGHT);
 		txtResult.setBounds(12, 89, 421, 47);
@@ -87,6 +83,7 @@ public class Calculator {
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				txtResult.setText(null);
+				txtOperator.setText(null);
 			}
 		});
 		Image btclr = new ImageIcon(this.getClass().getResource("/c.png")).getImage();
@@ -94,8 +91,19 @@ public class Calculator {
 		btnClear.setBounds(12, 145, 97, 63);
 		frame.getContentPane().add(btnClear);
 		
-		JButton btnBackspace = new JButton("B");
-		btnBackspace.setFont(new Font("Tahoma", Font.BOLD, 22));
+		JButton btnBackspace = new JButton("\uF0E7");
+		btnBackspace.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String backspace = null;
+				if(txtResult.getText().length()>0) {
+					StringBuilder strBuilder = new StringBuilder(txtResult.getText());
+					strBuilder.deleteCharAt(txtResult.getText().length()-1);
+					backspace = strBuilder.toString();
+					txtResult.setText(backspace);
+				}
+			}
+		});
+		btnBackspace.setFont(new Font("Wingdings", Font.BOLD, 22));
 		btnBackspace.setForeground(Color.BLACK);
 		Image btBack = new ImageIcon(this.getClass().getResource("/b.png")).getImage();
 		btnBackspace.setIcon(new ImageIcon(btBack));
